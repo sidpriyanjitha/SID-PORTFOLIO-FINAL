@@ -1,4 +1,11 @@
-import { AlertCircle, CheckCircle, Mail, MapPin, Phone, Send } from "lucide-react";
+import {
+  AlertCircle,
+  CheckCircle,
+  Mail,
+  MapPin,
+  Phone,
+  Send,
+} from "lucide-react";
 import { Button } from "@/components/Button";
 import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
@@ -59,31 +66,40 @@ export const Contact = () => {
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const templateIdSend = import.meta.env.VITE_EMAILJS_TEMPLATE_ID_SEND;
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      if (!serviceId || !templateId || !publicKey) {
+      if (!serviceId || !templateId || !templateIdSend || !publicKey) {
         throw new Error(
-          "EmailJS configuration is missing. Please check your environment variables."
+          "EmailJS configuration is missing. Please check your environment variables.",
         );
       }
 
       await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          to_name: "Sid Priyanjitha",
-          to_email: ownerEmail,
-          name: formData.name,
-          from_name: formData.name,
-          user_name: formData.name,
-          email: formData.email,
-          from_email: formData.email,
-          user_email: formData.email,
-          reply_to: formData.email,
-          message: formData.message,
-        },
-        publicKey
-      );
+  serviceId,
+  templateId,
+  {
+    to_name: "Sid Priyanjitha",
+    to_email: ownerEmail,
+    from_name: formData.name,
+    from_email: formData.email,
+    reply_to: formData.email,
+    message: formData.message,
+  },
+  publicKey
+);
+
+await emailjs.send(
+  serviceId,
+  templateIdSend,
+  {
+    to_name: formData.name,
+    to_email: formData.email,
+    from_name: "Sid Priyanjitha",
+    reply_to: ownerEmail,
+  },
+  publicKey
+);
 
       setSubmitStatus({
         type: "success",
@@ -94,7 +110,8 @@ export const Contact = () => {
       console.error("EmailJS error:", error);
       setSubmitStatus({
         type: "error",
-        message: error.text || "Failed to send message. Please try again later.",
+        message:
+          error.text || "Failed to send message. Please try again later.",
       });
     } finally {
       setIsLoading(false);
@@ -140,7 +157,10 @@ export const Contact = () => {
             <div className="bg-card p-5 text-foreground md:p-8 lg:p-10">
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div>
-                  <label htmlFor="name" className="mb-2 block text-sm font-bold">
+                  <label
+                    htmlFor="name"
+                    className="mb-2 block text-sm font-bold"
+                  >
                     Name
                   </label>
                   <input
@@ -157,7 +177,10 @@ export const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="mb-2 block text-sm font-bold">
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block text-sm font-bold"
+                  >
                     Email
                   </label>
                   <input
@@ -174,7 +197,10 @@ export const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-sm font-bold">
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-sm font-bold"
+                  >
                     Message
                   </label>
                   <textarea
@@ -190,7 +216,12 @@ export const Contact = () => {
                   />
                 </div>
 
-                <Button className="w-full" type="submit" size="lg" disabled={isLoading}>
+                <Button
+                  className="w-full"
+                  type="submit"
+                  size="lg"
+                  disabled={isLoading}
+                >
                   {isLoading ? (
                     "Sending..."
                   ) : (
