@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #f6f3ec;
+  --color-foreground: #16181d;
+
+  --color-card: #ffffff;
+
+  --color-primary: #3157d5;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #103c3d;
+  --color-secondary-foreground: #d7f2ec;
+
+  --color-muted: #ebe7dc;
+  --color-muted-foreground: #68707d;
+
+  --color-border: #ded8ca;
+
+  --radius: 0.75rem;
+
+  --color-highlight: #e3a12f;
+  --color-surface: #fffaf0;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --color-background: #0f1218;
+    --color-foreground: #f6f3ec;
+    --color-card: #171b24;
+    --color-primary: #7f9cff;
+    --color-primary-foreground: #0f1218;
+    --color-secondary: #d7f2ec;
+    --color-secondary-foreground: #103c3d;
+    --color-muted: #202633;
+    --color-muted-foreground: #a6adbb;
+    --color-border: #2d3442;
+    --color-highlight: #f3b84a;
+    --color-surface: #121722;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  body {
+    min-width: 320px;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    transition:
+      background-color 250ms ease,
+      color 250ms ease;
+  }
+
+  .dark body {
+    background: var(--color-background);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-primary) 22%, transparent);
+  }
+}
+
+@layer components {
+  .container {
+    max-width: 1180px;
+  }
+
+  .glass {
+    background: color-mix(in srgb, var(--color-card) 78%, transparent);
+    backdrop-filter: blur(18px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 72%, transparent);
+    box-shadow: 0 22px 70px color-mix(in srgb, var(--color-foreground) 8%, transparent);
+  }
+
+  .glass-strong {
+    background: color-mix(in srgb, var(--color-card) 90%, transparent);
+    backdrop-filter: blur(22px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+    box-shadow: 0 18px 60px color-mix(in srgb, var(--color-foreground) 8%, transparent);
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .section-label::before {
+    content: "";
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: var(--color-highlight);
+  }
+
+  .eyebrow-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-card) 72%, transparent);
+    color: var(--color-secondary);
+    border-radius: 999px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .animated-background {
+    position: relative;
+    isolation: isolate;
+    background:
+      radial-gradient(circle at 50% -10%, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 30rem),
+      var(--color-background);
+  }
+
+  .animated-background::before,
+  .animated-background::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .animated-background::before {
+    inset: -35%;
+    opacity: 0.78;
+    background: conic-gradient(
+      from 120deg at 50% 50%,
+      transparent 0deg,
+      color-mix(in srgb, var(--color-primary) 12%, transparent) 58deg,
+      transparent 118deg,
+      color-mix(in srgb, var(--color-highlight) 14%, transparent) 184deg,
+      transparent 248deg,
+      color-mix(in srgb, var(--color-secondary) 10%, transparent) 304deg,
+      transparent 360deg
+    );
+    filter: blur(64px);
+    transform: translate3d(0, 0, 0);
+    animation: aurora-shift 28s ease-in-out infinite alternate;
+  }
+
+  .animated-background::after {
+    opacity: 0.55;
+    background:
+      radial-gradient(circle at 22% 18%, color-mix(in srgb, var(--color-card) 46%, transparent), transparent 18rem),
+      radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--color-card) 36%, transparent), transparent 18rem),
+      linear-gradient(to bottom, transparent, var(--color-background) 86%);
+  }
+}
+
+@layer utilities {
+  @keyframes aurora-shift {
+    0% {
+      transform: translate3d(-2%, -1%, 0) rotate(0deg) scale(1);
+    }
+    100% {
+      transform: translate3d(2%, 1%, 0) rotate(10deg) scale(1.06);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.7s ease-out both;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .timeline-glow {
+    box-shadow:
+      0 0 30px color-mix(in srgb, var(--color-primary) 28%, transparent),
+      0 0 70px color-mix(in srgb, var(--color-highlight) 18%, transparent);
+  }
+}
