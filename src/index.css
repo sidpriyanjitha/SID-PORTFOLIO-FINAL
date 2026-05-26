@@ -128,7 +128,8 @@
     position: relative;
     isolation: isolate;
     background:
-      radial-gradient(circle at 50% -10%, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 30rem),
+      radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--color-primary) 8%, transparent), transparent 34rem),
+      radial-gradient(circle at 86% 8%, color-mix(in srgb, var(--color-highlight) 7%, transparent), transparent 30rem),
       var(--color-background);
   }
 
@@ -142,39 +143,39 @@
   }
 
   .animated-background::before {
-    inset: -35%;
-    opacity: 0.78;
-    background: conic-gradient(
-      from 120deg at 50% 50%,
-      transparent 0deg,
-      color-mix(in srgb, var(--color-primary) 12%, transparent) 58deg,
-      transparent 118deg,
-      color-mix(in srgb, var(--color-highlight) 14%, transparent) 184deg,
-      transparent 248deg,
-      color-mix(in srgb, var(--color-secondary) 10%, transparent) 304deg,
-      transparent 360deg
-    );
-    filter: blur(64px);
+    inset: -12%;
+    opacity: 0.42;
+    background:
+      radial-gradient(circle at 16% 24%, color-mix(in srgb, var(--color-primary) 13%, transparent), transparent 22rem),
+      radial-gradient(circle at 78% 28%, color-mix(in srgb, var(--color-highlight) 10%, transparent), transparent 24rem),
+      radial-gradient(circle at 42% 74%, color-mix(in srgb, var(--color-secondary) 8%, transparent), transparent 26rem);
     transform: translate3d(0, 0, 0);
-    animation: aurora-shift 28s ease-in-out infinite alternate;
+    will-change: transform;
+    animation: atmospheric-drift 48s ease-in-out infinite alternate;
   }
 
   .animated-background::after {
-    opacity: 0.55;
+    inset: 0;
+    opacity: 0.5;
     background:
-      radial-gradient(circle at 22% 18%, color-mix(in srgb, var(--color-card) 46%, transparent), transparent 18rem),
-      radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--color-card) 36%, transparent), transparent 18rem),
-      linear-gradient(to bottom, transparent, var(--color-background) 86%);
+      linear-gradient(to bottom, transparent 0%, var(--color-background) 88%),
+      radial-gradient(circle at 50% 16%, color-mix(in srgb, var(--color-card) 34%, transparent), transparent 28rem);
   }
 }
 
 @layer utilities {
-  @keyframes aurora-shift {
+  @keyframes atmospheric-drift {
     0% {
-      transform: translate3d(-2%, -1%, 0) rotate(0deg) scale(1);
+      transform: translate3d(-1.25rem, -0.75rem, 0) scale(1);
     }
     100% {
-      transform: translate3d(2%, 1%, 0) rotate(10deg) scale(1.06);
+      transform: translate3d(1.25rem, 0.75rem, 0) scale(1.03);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animated-background::before {
+      animation: none;
     }
   }
 
