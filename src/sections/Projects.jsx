@@ -163,7 +163,7 @@ export const Projects = () => {
                     <a
                       href={project.link}
                       aria-label={`${project.title} live project`}
-                      className="group/action relative grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:border-primary hover:bg-primary hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                      className="group/action relative grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:border-primary hover:bg-primary hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary animate-bounce"
                     >
                       <ArrowUpRight className="h-5 w-5" />
                       <span className="pointer-events-none absolute -top-11 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-foreground px-3 py-1.5 text-xs font-bold text-background opacity-0 shadow-lg transition-all duration-200 group-hover/action:-translate-y-1 group-hover/action:opacity-100 group-focus-visible/action:-translate-y-1 group-focus-visible/action:opacity-100">

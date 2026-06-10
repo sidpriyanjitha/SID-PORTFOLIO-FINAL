@@ -33,7 +33,7 @@ export const About = () => {
       <div className="container mx-auto">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div className="space-y-5">
-            <span className="section-label">About</span>
+            <span className="section-label ">About</span>
             <h2 className="max-w-xl text-4xl font-black leading-tight text-foreground md:text-6xl">
               I design the frontend layer where product strategy becomes usable
               software.
@@ -73,7 +73,7 @@ export const About = () => {
         </div>
 
         <div className="mt-6 rounded-[32px] bg-secondary p-7 text-secondary-foreground md:p-10">
-          <p className="max-w-4xl text-2xl font-black leading-tight md:text-4xl">
+          <p className="max-w-4xl text-2xl font-black leading-tight md:text-4xl animate-pulse">
             "My goal is to make the product feel obvious to users and
             dependable to the team that has to keep building it."
           </p>
