@@ -62,7 +62,8 @@ export const Navbar = ({ theme, onToggleTheme }) => {
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <Button href="#contact" size="sm">
-            Start a project
+            
+           
           </Button>
         </div>
 
