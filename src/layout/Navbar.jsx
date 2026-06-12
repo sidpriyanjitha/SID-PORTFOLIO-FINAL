@@ -32,7 +32,7 @@ export const Navbar = ({ theme, onToggleTheme }) => {
       <nav className="container mx-auto flex items-center justify-between px-5">
         <a
           href="#"
-          className="flex items-center gap-3 rounded-full bg-secondary px-3 py-2 text-sm font-black text-secondary-foreground shadow-[0_16px_36px_rgba(22,24,29,0.16)]"
+          className="flex items-center gap-5 rounded-full bg-secondary px-3 py-2 text-sm font-black text-secondary-foreground shadow-[0_16px_36px_rgba(22,24,29,0.16)]"
         >
           <span className="grid h-8 w-8 place-items-center rounded-full bg-highlight text-foreground">
             S
