@@ -162,6 +162,7 @@ export const Projects = () => {
                   <div className="flex shrink-0 gap-2">
                     <a
                       href={project.link}
+                      target="_blank"
                       aria-label={`${project.title} live project`}
                       className="group/action relative grid h-11 w-11 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:border-primary hover:bg-primary hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary animate-bounce"
                     >
