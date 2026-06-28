@@ -4,10 +4,10 @@ import { Button } from "@/components/Button";
 
 const projects = [
   {
-    title: "Sample Project 01",
+    title: "IT Service Desk Dashboard",
     description:
       "Financial analytics workspace with live portfolio views, KPI panels, and decision-ready charts.",
-    image: "/projects/project5.png",
+    image: "/projects/IT Service Desk.png",
     tags: ["React", "TypeScript", "Node.js"],
     link: "#",
     github: "#",
