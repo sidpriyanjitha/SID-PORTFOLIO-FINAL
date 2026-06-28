@@ -9,7 +9,7 @@ const projects = [
       "Financial analytics workspace with live portfolio views, KPI panels, and decision-ready charts.",
     image: "/projects/IT Service Desk.png",
     tags: ["React", "TypeScript", "Node.js"],
-    link: "https://it-service-desk-dashboard-p4wdzvnd2-sidpk93-3727s-projects.vercel.app/login",
+    link: "https://it-service-desk-dashboard.vercel.app/login",
     github: "#",
     role: "Frontend architecture, dashboard UI, chart layout, responsive states.",
     problem:
